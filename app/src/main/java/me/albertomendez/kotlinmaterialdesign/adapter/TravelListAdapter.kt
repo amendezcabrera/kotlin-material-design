@@ -14,6 +14,8 @@ import me.albertomendez.kotlinmaterialdesign.model.PlaceData
  * Created by alberto on 10/1/18.
  */
 class TravelListAdapter(private var context: Context) : RecyclerView.Adapter<TravelListAdapter.ViewHolder>() {
+    lateinit var itemClickListener: OnItemClickListener
+
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val place = PlaceData.placeList()[position]
         holder?.itemView?.placeName?.text = place.name
@@ -27,6 +29,20 @@ class TravelListAdapter(private var context: Context) : RecyclerView.Adapter<Tra
         return ViewHolder(itemView)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) = itemClickListener.onItemClick(itemView, adapterPosition)
+    }
+
+    fun setOnItemClickListener(itemClickListener: OnItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(view: View, position: Int)
+    }
 
 }
