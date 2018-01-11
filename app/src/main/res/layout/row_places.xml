@@ -35,6 +35,7 @@
             android:orientation="horizontal"
             android:background="@color/whiteTrans"
             android:gravity="bottom"
+            android:alpha="0.75"
             android:layout_alignParentBottom="true">
 
             <TextView
@@ -42,12 +43,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:alpha="60"
                 android:gravity="center"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
-                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </RelativeLayout>
